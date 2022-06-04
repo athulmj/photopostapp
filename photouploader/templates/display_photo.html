@@ -1,0 +1,17 @@
+{%extends 'photo-base.html'%}
+  
+{%block body_block%}
+    <form method="post" enctype="multipart/form-data">  
+        {%csrf_token%}
+        {{form.as_p}}
+        <button type="submit">Upload</button>  
+    </form>  
+  
+    {%if img_obj%}
+        <h3>Succesfully uploaded : {{img_obj.caption}}</h3>
+        <h3>Uploader : {{img_obj.author}}</h3>
+        <img src="{{ img_obj.image.url}}" alt="connect" style="max-height:300px"><br>
+         <a href="#" class="card-link btn btn-success mt-3">Like</a>
+    {% endif %}  
+  
+{%endblock%}
